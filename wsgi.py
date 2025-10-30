@@ -1,0 +1,18 @@
+# wsgi.py
+"""
+WSGI entry point for the Flask application.
+This file allows you to run the app with 'flask run' or through a WSGI server.
+"""
+
+from app import create_app
+
+# Create the Flask app using the factory function from app/__init__.py
+app = create_app()
+
+# Optional: For direct execution (python wsgi.py)
+if __name__ == "__main__":
+    app.run(
+        host="0.0.0.0",  # accessible on all network interfaces
+        port=5000,
+        debug=True       # disable debug=True in production
+    )

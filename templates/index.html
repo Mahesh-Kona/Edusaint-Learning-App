@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EduSaint | Admin Login</title>
+    <style>
+      /* Reset & Base */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+        background: linear-gradient(135deg, #e6f4ec 0%, #c8ecd6 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        color: #2f3e2f;
+      }
+
+      /* Card */
+      .card {
+        background: #ffffff;
+        border-radius: 14px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        padding: 48px 50px;
+        width: 420px;
+        animation: fadeIn 0.7s ease-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(25px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Logo */
+      .logo {
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        background: linear-gradient(145deg, #2e8b57, #1b6b3c);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 16px auto;
+        color: #fff;
+        font-size: 34px;
+        font-weight: 700;
+        font-family: "Poppins", sans-serif;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 10px rgba(46, 139, 87, 0.2);
+      }
+
+      /* Title & Subtitle */
+      h2 {
+        text-align: center;
+        color: #234b2e;
+        margin-bottom: 6px;
+        font-size: 1.6rem;
+        letter-spacing: 0.3px;
+      }
+
+      p.subtitle {
+        text-align: center;
+        color: #5e7d65;
+        margin-bottom: 28px;
+        font-size: 0.95rem;
+      }
+
+      /* Form */
+      .form-group {
+        margin-bottom: 18px;
+      }
+
+      label {
+        display: block;
+        font-weight: 500;
+        margin-bottom: 6px;
+        color: #2f5136;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #c2d8ca;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        transition: all 0.25s ease;
+      }
+
+      input:focus {
+        border-color: #2e8b57;
+        box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.15);
+        outline: none;
+      }
+
+      /* Button */
+      .btn {
+        width: 100%;
+        background: linear-gradient(90deg, #2e8b57, #1b6b3c);
+        border: none;
+        border-radius: 8px;
+        padding: 12px;
+        color: #fff;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn:hover {
+        opacity: 0.95;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 10px rgba(46, 139, 87, 0.2);
+      }
+
+      /* Flash messages */
+      .msg {
+        margin-bottom: 16px;
+        padding: 10px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+      }
+
+      .msg.error {
+        background: #fbeaea;
+        color: #a12f2f;
+      }
+
+      .msg.info {
+        background: #e8f7ec;
+        color: #235d3c;
+      }
+
+      /* Footer note */
+      .note {
+        font-size: 0.85rem;
+        color: #58755c;
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      /* Responsive */
+      @media (max-width: 480px) {
+        .card {
+          width: 90%;
+          padding: 36px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="card">
+      <div class="logo">E</div>
+      <h2>Edusaint Admin Portal</h2>
+      <p class="subtitle">Sign in to manage courses, users, and content</p>
+
+
+      <form method="post" action="{{ url_for('admin_bp.admin_login_post') }}">
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            placeholder="admin@edusaint.com"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+
+        <button class="btn" type="submit">Login to Dashboard</button>
+      </form>
+
+      <div class="note">© 2025 Edusaint | Authorized administrators only</div>
+    </div>
+  </body>
+</html>

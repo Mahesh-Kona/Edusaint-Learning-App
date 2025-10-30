@@ -1,0 +1,51 @@
+{
+  "info": {
+    "name": "Flask Learning Backend",
+    "_postman_id": "0000-0000-0000-0000",
+    "description": "Basic collection for auth, courses, lessons, content, uploads and progress.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\":\"test@example.com\",\"password\":\"secret\"}"
+        },
+        "url": "http://localhost:5000/api/v1/auth/register"
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": { "mode": "raw", "raw": "{\"email\":\"test@example.com\",\"password\":\"secret\"}" },
+        "url": "http://localhost:5000/api/v1/auth/login"
+      }
+    },
+    {
+      "name": "Refresh Token",
+      "request": { "method": "POST", "header": [], "url": "http://localhost:5000/api/v1/auth/refresh" }
+    },
+    {
+      "name": "List Courses",
+      "request": { "method": "GET", "url": "http://localhost:5000/api/v1/courses" }
+    },
+    {
+      "name": "Get Course Lessons",
+      "request": { "method": "GET", "url": "http://localhost:5000/api/v1/courses/1/lessons" }
+    },
+    {
+      "name": "Get Lesson Content",
+      "request": { "method": "GET", "url": "http://localhost:5000/api/v1/content/1" }
+    }
+  ]
+}
