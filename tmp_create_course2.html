@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EduSaint - Create Course</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="/static/css/create_course.css" />
+  <!-- Load admin sidebar/dashboard styles last so they override page CSS where needed -->
+  <link rel="stylesheet" href="/static/css/dashboard.css" />
+  <link rel="stylesheet" href="/static/css/admin_sidebar.css" />
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+  <div class="brand">
+    <i class="fas fa-user-graduate"></i>
+    <h2>EduSaint</h2>
+  </div>
+
+  <nav>
+    <ul class="menu">
+      <li class="menu-item "><a href="/admin/dashboard"><i class="fas fa-home"></i><span>Dashboard</span></a></li>
+      <li class="menu-item active"><a href="/admin/create_course"><i class="fas fa-plus-circle"></i><span>Create Course</span></a></li>
+      <li class="menu-item "><a href="/admin/lesson"><i class="fas fa-book"></i><span>Lessons</span></a></li>
+      <li class="menu-item "><a href="#"><i class="fas fa-chart-line"></i><span>Analytics</span></a></li>
+      <li class="menu-item "><a href="#"><i class="fas fa-cog"></i><span>Settings</span></a></li>
+    </ul>
+  </nav>
+
+  <div class="sidebar-footer">
+    <a href="/admin/logout" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </div>
+</aside>
+
+    <main class="main-content">
+      <header class="header">
+        <h1>Create New Course</h1>
+        <div class="header-actions">
+          <a class="btn secondary" href="/admin/dashboard"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+        </div>
+      </header>
+
+      <section class="body-grid">
+        <div class="panel form-panel">
+          <form id="courseForm" class="course-form">
+            <div class="form-row">
+              <label for="courseTitle">Course Title *</label>
+              <input id="courseTitle" type="text" placeholder="e.g. Mathematics Class 10" required />
+            </div>
+
+            <div class="form-row">
+              <label for="courseDescription">Course Description</label>
+              <textarea id="courseDescription" rows="4" placeholder="Short description"></textarea>
+            </div>
+
+            <div class="form-row two-cols">
+              <div>
+                <label for="courseCategory">Subject Category *</label>
+                <select id="courseCategory" required>
+                  <option value="">Select Category</option>
+                  <option>Mathematics</option>
+                  <option>Science</option>
+                  <option>English</option>
+                  <option>Computer Science</option>
+                </select>
+              </div>
+              <div>
+                <label for="courseClass">Class *</label>
+                <select id="courseClass" required>
+                  <option value="">Select Class</option>
+                  <option value="9">Class 9</option>
+                  <option value="10">Class 10</option>
+                  <option value="11">Class 11</option>
+                  <option value="12">Class 12</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label>Course Type</label>
+              <div class="type-options">
+                <label><input type="radio" name="courseType" value="video" checked /> Video</label>
+                <label><input type="radio" name="courseType" value="live" /> Live</label>
+                <label><input type="radio" name="courseType" value="hybrid" /> Hybrid</label>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label for="coursePrice">Price (₹)</label>
+              <input id="coursePrice" type="number" placeholder="e.g. 2999" />
+            </div>
+
+            <div class="form-row">
+              <label for="thumbnail">Course Thumbnail</label>
+              <input id="thumbnail" type="file" accept="image/*" />
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn primary">Save & Open Lesson</button>
+              <button type="button" id="resetBtn" class="btn outline">Reset</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="panel preview-panel">
+          <h2>Live Preview</h2>
+          <div class="preview-card">
+            <img id="previewImage" src="https://via.placeholder.com/320x180.png?text=Thumbnail" alt="thumbnail" />
+            <h3 id="previewTitle">Course Title</h3>
+            <p id="previewDesc">Course description will appear here.</p>
+            <div class="preview-meta">
+              <span id="previewCategory">Category: -</span>
+              <span id="previewClass">Class: -</span>
+            </div>
+            <a id="openLessonBtn" class="btn secondary" href="/admin/lesson"><i class="fas fa-book"></i> Open Lesson</a>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <small>© EduSaint</small>
+      </footer>
+    </main>
+  </div>
+
+  <script src="/static/js/create_course.js"></script>
+</body>
+</html>

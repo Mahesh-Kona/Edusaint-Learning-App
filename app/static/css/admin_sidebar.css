@@ -1,0 +1,20 @@
+/* Admin sidebar specific styles - override/ensure consistent sidebar across admin pages */
+.sidebar{width:260px;background:var(--primary);color:#fff;display:flex;flex-direction:column;justify-content:space-between;padding:22px 18px;position:fixed;left:0;top:0;bottom:0;overflow-y:auto;box-shadow:2px 0 8px rgba(15,23,42,0.06);z-index:100}
+.brand{display:flex;align-items:center;gap:10px}
+.brand i{font-size:26px;color:#fff}
+.brand h2{font-size:18px;margin:0}
+.menu{list-style:none;padding:20px 0;margin:0}
+.menu .menu-item{margin:8px 0}
+.menu .menu-item a{display:flex;align-items:center;gap:12px;padding:10px 16px;border-radius:10px;color:#fff;text-decoration:none;transition:var(--transition)}
+.menu .menu-item a i{width:20px;text-align:center}
+.menu .menu-item:hover a,.menu .menu-item.active a{background:rgba(255,255,255,0.08)}
+.menu .menu-item a span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sidebar-footer{padding-top:10px}
+.logout-btn{width:100%;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:transparent;border:1px solid rgba(255,255,255,0.12);color:#fff;padding:10px;border-radius:8px;cursor:pointer;text-decoration:none}
+.main-content{flex:1;padding:28px 36px;display:flex;flex-direction:column;margin-left:260px}
+@media (max-width: 900px){
+  .sidebar{display:none;position:static}
+  .main-content{margin-left:0}
+  .content-grid{grid-template-columns:1fr}
+  .search input{width:120px}
+}

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>EduSaint - Create Topic</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/create_topic.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/admin_sidebar.css') }}">
+</head>
+	<body>
+	<div class="dashboard">
+		{% set active = 'topics' %}
+		{% include 'admin_sidebar.html' %}
+
+		<main class="main-content">
+        	<div class="header">
+            	<div class="header-left">
+                	<h1>Topic Management</h1>
+                	<p>Create byte-sized learning cards for each topic</p>
+            	</div>
+				<div class="header-right">
+					<div class="search-bar">
+						<i class="fas fa-search"></i>
+						<input type="text" placeholder="Search students, teachers, courses..." />
+					</div>
+					<div class="user-actions">
+						<div class="notification">
+							<i class="far fa-bell"></i>
+							<div class="notification-badge">0</div>
+						</div>
+						<div class="user-profile">
+							<div class="avatar">AD</div>
+							<div>
+								<div style="font-weight: 500;">Admin User</div>
+								<div style="font-size: 0.8rem; color: var(--gray);">Administrator</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+        	<!-- Topic Creation Content -->
+			<div class="topic-creation">
+            	<div class="page-header">
+                	<h1 class="page-title">Create New Topic</h1>
+                	<div class="page-actions">
+						<button type="button" class="btn btn-outline">
+                        	<i class="fas fa-times"></i> Cancel
+                    	</button>
+						<button type="submit" form="topicForm" class="btn btn-primary">
+                        	<i class="fas fa-save"></i> Save Topic
+                    	</button>
+                	</div>
+            	</div>
+
+				<form id="topicForm" method="post" action="{{ url_for('admin_bp.create_topic_post') }}">
+				<div class="topic-form-container">
+                	<!-- Main Topic Form -->
+                	<div class="topic-main">
+                    	<section class="form-section">
+                        	<h2 class="section-title"><i class="fas fa-info-circle"></i> Topic Details</h2>
+							<div class="form-group">
+								<label for="topicTitle">Topic Title *</label>
+								<input type="text" id="topicTitle" name="title" placeholder="e.g., Reflection of Light" required>
+							</div>
+							{% if lessons and lessons|length > 0 %}
+							<div class="form-group">
+								<label for="lessonSelect">Attach to Lesson *</label>
+								<select id="lessonSelect" name="lesson_id" required>
+									<option value="">Select lesson</option>
+									{% for l in lessons %}
+										<option value="{{ l.id }}" {% if selected_lesson and selected_lesson == l.id|string %}selected{% endif %}>{{ l.title }} (Course {{ l.course_id }})</option>
+									{% endfor %}
+								</select>
+							</div>
+							{% endif %}
+							<div class="form-group">
+								<label for="topicDescription">Topic Description</label>
+								<textarea id="topicDescription" name="description" placeholder="Brief description of what this topic covers..."></textarea>
+							</div>
+                    	</section>
+
+                    	<section class="form-section">
+                        	<h2 class="section-title"><i class="fas fa-bullseye"></i> Learning Objectives</h2>
+                        	<div class="objectives-list">
+								<div class="objective-item">
+									<div class="objective-number">1</div>
+									<input type="text" name="objectives" class="objective-input" placeholder="Define reflection and the law of reflection...">
+								</div>
+								<div class="objective-item">
+									<div class="objective-number">2</div>
+									<input type="text" name="objectives" class="objective-input" placeholder="Identify incident ray, reflected ray, normal on diagrams...">
+								</div>
+								<div class="objective-item">
+									<div class="objective-number">3</div>
+									<input type="text" name="objectives" class="objective-input" placeholder="Differentiate between specular and diffuse reflection...">
+								</div>
+                            	<div class="add-objective">
+                                	<i class="fas fa-plus"></i>
+                                	<span>Add Learning Objective</span>
+                            	</div>
+                        	</div>
+                    	</section>
+
+                    	<section class="cards-section">
+                        	<div class="cards-header">
+                            	<h2 class="section-title"><i class="fas fa-layer-group"></i> Learning Cards</h2>
+                            	<button class="btn btn-primary"><i class="fas fa-plus"></i> Add Card</button>
+                        	</div>
+
+                        	<div class="cards-grid" id="cardsGrid"></div>
+
+                        	<div class="add-card">
+                            	<i class="fas fa-plus"></i> Add New Card
+                        	</div>
+                    	</section>
+                	</div>
+
+                	<!-- Topic Sidebar -->
+                	<div class="topic-sidebar">
+                    	<div class="sidebar-section">
+                        	<h3 class="sidebar-title"><i class="fas fa-puzzle-piece"></i> Card Types</h3>
+                        	<div class="card-types-grid">
+                            	<div class="card-type-option"><i class="fas fa-align-left"></i><div class="card-type-name">Intro</div></div>
+                            	<div class="card-type-option"><i class="fas fa-image"></i><div class="card-type-name">Concept</div></div>
+                            	<div class="card-type-option"><i class="fas fa-play-circle"></i><div class="card-type-name">Video</div></div>
+                            	<div class="card-type-option"><i class="fas fa-mouse-pointer"></i><div class="card-type-name">Drag & Drop</div></div>
+                        	</div>
+                    	</div>
+
+                    	<div class="sidebar-section">
+                        	<h3 class="sidebar-title"><i class="fas fa-cog"></i> Topic Settings</h3>
+							<div class="form-group">
+								<label for="estimatedTime">Estimated Time (minutes)</label>
+								<input type="number" id="estimatedTime" name="estimated_time" placeholder="e.g., 15">
+							</div>
+							<div class="form-group">
+								<label for="topicDifficulty">Difficulty Level</label>
+								<select id="topicDifficulty" name="difficulty">
+									<option value="easy">Easy</option>
+									<option value="medium" selected>Medium</option>
+									<option value="hard">Hard</option>
+								</select>
+							</div>
+                    	</div>
+					</div>
+            	</div>
+				</form>
+			</div>
+		</main>
+		</div>
+
+		<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/create_topic.js') }}"></script>
+</body>
+</html>

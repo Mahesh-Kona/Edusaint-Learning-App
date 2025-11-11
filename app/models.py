@@ -26,14 +26,36 @@ class Course(db.Model):  # type: ignore[name-defined]
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), index=True, nullable=False)
     description = db.Column(db.Text)
+    # Extended fields for admin-managed course metadata
+    thumbnail_url = db.Column(db.String(1024), nullable=True)
+    # optional FK to an Asset row for the thumbnail
+    thumbnail_asset_id = db.Column(db.Integer, db.ForeignKey('assets.id'), nullable=True)
+    category = db.Column(db.String(100), nullable=True, index=True)
+    class_name = db.Column(db.String(50), nullable=True, index=True)
+    price = db.Column(db.Integer, nullable=True)
+    published = db.Column(db.Boolean, default=False, index=True)
+    featured = db.Column(db.Boolean, default=False)
+    duration_weeks = db.Column(db.Integer, nullable=True)
+    weekly_hours = db.Column(db.Integer, nullable=True)
+    difficulty = db.Column(db.Enum('beginner','intermediate','advanced', name='course_difficulty'), nullable=True, index=True)
+    stream = db.Column(db.String(50), nullable=True)
+    tags = db.Column(db.Text, nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow, index=True)
+    # relationship to the Asset model (nullable)
+    thumbnail_asset = db.relationship('Asset', foreign_keys=[thumbnail_asset_id])
 
 class Lesson(db.Model):  # type: ignore[name-defined]
     __tablename__ = "lessons"
     id = db.Column(db.Integer, primary_key=True)
     course_id = db.Column(db.Integer, db.ForeignKey("courses.id"), index=True, nullable=False)
     title = db.Column(db.String(255), nullable=False, index=True)
+    # store optional rich/structured content; legacy clients may still use this
     content_json = db.Column(JSON_COL, nullable=True)
+    # convenience columns derived from admin UI fields in lesson.html
+    description = db.Column(db.Text, nullable=True)
+    duration = db.Column(db.Integer, nullable=True)
+    level = db.Column(db.String(50), nullable=True, index=True)
+    objectives = db.Column(db.Text, nullable=True)
     content_version = db.Column(db.Integer, default=1)
     created_at = db.Column(db.DateTime, default=datetime.utcnow, index=True)
 

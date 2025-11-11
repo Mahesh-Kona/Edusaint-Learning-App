@@ -18,7 +18,11 @@ depends_on = None
 def upgrade():
     # Create a unique index on attempt_id to prevent duplicate attempts when provided
     # MySQL allows multiple NULLs for unique indexes so anonymous submissions won't be blocked.
-    op.create_index('uq_progress_attempt_id', 'progress', ['attempt_id'], unique=True)
+    try:
+        op.create_index('uq_progress_attempt_id', 'progress', ['attempt_id'], unique=True)
+    except Exception:
+        # index may already exist on the target DB; ignore duplicate index errors
+        pass
 
 
 def downgrade():

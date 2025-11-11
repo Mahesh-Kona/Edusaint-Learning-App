@@ -1,0 +1,388 @@
+---
+2025-11-06T17:47:03.289138
+Traceback (most recent call last):
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'thumbnail_url' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n2101\OneDrive\Desktop\flask-learning-backend\app\routes\admin_routes.py", line 378, in create_course_post
+    db.session.commit()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\scoping.py", line 597, in commit
+    return self._proxied.commit()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\session.py", line 2030, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\session.py", line 1311, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\session.py", line 1286, in _prepare_impl
+    self.session.flush()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\session.py", line 4331, in flush
+    self._flush(objects)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\session.py", line 4466, in _flush
+    with util.safe_reraise():
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\session.py", line 4427, in _flush
+    flush_context.execute()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1054, "Unknown column 'thumbnail_url' in 'field list'")
+[SQL: INSERT INTO courses (title, description, thumbnail_url, thumbnail_asset_id, category, class_name, price, published, featured, duration_weeks, weekly_hours, difficulty, stream, tags, created_at) VALUES (%(title)s, %(description)s, %(thumbnail_url)s, %(thumbnail_asset_id)s, %(category)s, %(class_name)s, %(price)s, %(published)s, %(featured)s, %(duration_weeks)s, %(weekly_hours)s, %(difficulty)s, %(stream)s, %(tags)s, %(created_at)s)]
+[parameters: {'title': 'fr', 'description': 'fdg', 'thumbnail_url': None, 'thumbnail_asset_id': None, 'category': 'hindi', 'class_name': '10', 'price': None, 'published': 0, 'featured': 0, 'duration_weeks': None, 'weekly_hours': None, 'difficulty': None, 'stream': None, 'tags': None, 'created_at': datetime.datetime(2025, 11, 6, 17, 47, 3, 264332)}]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+---
+2025-11-06T17:47:52.941756
+Traceback (most recent call last):
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'thumbnail_url' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n2101\OneDrive\Desktop\flask-learning-backend\app\routes\admin_routes.py", line 378, in create_course_post
+    db.session.commit()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\scoping.py", line 597, in commit
+    return self._proxied.commit()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\session.py", line 2030, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\session.py", line 1311, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\session.py", line 1286, in _prepare_impl
+    self.session.flush()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\session.py", line 4331, in flush
+    self._flush(objects)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\session.py", line 4466, in _flush
+    with util.safe_reraise():
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\session.py", line 4427, in _flush
+    flush_context.execute()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1054, "Unknown column 'thumbnail_url' in 'field list'")
+[SQL: INSERT INTO courses (title, description, thumbnail_url, thumbnail_asset_id, category, class_name, price, published, featured, duration_weeks, weekly_hours, difficulty, stream, tags, created_at) VALUES (%(title)s, %(description)s, %(thumbnail_url)s, %(thumbnail_asset_id)s, %(category)s, %(class_name)s, %(price)s, %(published)s, %(featured)s, %(duration_weeks)s, %(weekly_hours)s, %(difficulty)s, %(stream)s, %(tags)s, %(created_at)s)]
+[parameters: {'title': 'fr', 'description': 'fdg', 'thumbnail_url': None, 'thumbnail_asset_id': None, 'category': 'hindi', 'class_name': '10', 'price': None, 'published': 0, 'featured': 0, 'duration_weeks': None, 'weekly_hours': None, 'difficulty': None, 'stream': None, 'tags': None, 'created_at': datetime.datetime(2025, 11, 6, 17, 47, 52, 933509)}]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+---
+2025-11-06T17:47:55.140074
+Traceback (most recent call last):
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'thumbnail_url' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n2101\OneDrive\Desktop\flask-learning-backend\app\routes\admin_routes.py", line 378, in create_course_post
+    db.session.commit()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\scoping.py", line 597, in commit
+    return self._proxied.commit()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\session.py", line 2030, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\session.py", line 1311, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\session.py", line 1286, in _prepare_impl
+    self.session.flush()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\session.py", line 4331, in flush
+    self._flush(objects)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\session.py", line 4466, in _flush
+    with util.safe_reraise():
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\session.py", line 4427, in _flush
+    flush_context.execute()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1054, "Unknown column 'thumbnail_url' in 'field list'")
+[SQL: INSERT INTO courses (title, description, thumbnail_url, thumbnail_asset_id, category, class_name, price, published, featured, duration_weeks, weekly_hours, difficulty, stream, tags, created_at) VALUES (%(title)s, %(description)s, %(thumbnail_url)s, %(thumbnail_asset_id)s, %(category)s, %(class_name)s, %(price)s, %(published)s, %(featured)s, %(duration_weeks)s, %(weekly_hours)s, %(difficulty)s, %(stream)s, %(tags)s, %(created_at)s)]
+[parameters: {'title': 'fr', 'description': 'fdg', 'thumbnail_url': None, 'thumbnail_asset_id': None, 'category': 'hindi', 'class_name': '10', 'price': None, 'published': 0, 'featured': 0, 'duration_weeks': None, 'weekly_hours': None, 'difficulty': None, 'stream': None, 'tags': None, 'created_at': datetime.datetime(2025, 11, 6, 17, 47, 55, 112892)}]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+---
+2025-11-06T17:47:58.034312
+Traceback (most recent call last):
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'thumbnail_url' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\n2101\OneDrive\Desktop\flask-learning-backend\app\routes\admin_routes.py", line 378, in create_course_post
+    db.session.commit()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\scoping.py", line 597, in commit
+    return self._proxied.commit()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\session.py", line 2030, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\session.py", line 1311, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\session.py", line 1286, in _prepare_impl
+    self.session.flush()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\session.py", line 4331, in flush
+    self._flush(objects)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\session.py", line 4466, in _flush
+    with util.safe_reraise():
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\session.py", line 4427, in _flush
+    flush_context.execute()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\orm\persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\sqlalchemy\engine\default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\n2101\AppData\Local\Programs\Python\Python310\lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1054, "Unknown column 'thumbnail_url' in 'field list'")
+[SQL: INSERT INTO courses (title, description, thumbnail_url, thumbnail_asset_id, category, class_name, price, published, featured, duration_weeks, weekly_hours, difficulty, stream, tags, created_at) VALUES (%(title)s, %(description)s, %(thumbnail_url)s, %(thumbnail_asset_id)s, %(category)s, %(class_name)s, %(price)s, %(published)s, %(featured)s, %(duration_weeks)s, %(weekly_hours)s, %(difficulty)s, %(stream)s, %(tags)s, %(created_at)s)]
+[parameters: {'title': 'fr', 'description': 'fdg', 'thumbnail_url': None, 'thumbnail_asset_id': None, 'category': 'hindi', 'class_name': '10', 'price': None, 'published': 0, 'featured': 0, 'duration_weeks': None, 'weekly_hours': None, 'difficulty': None, 'stream': None, 'tags': None, 'created_at': datetime.datetime(2025, 11, 6, 17, 47, 57, 483272)}]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+

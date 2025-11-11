@@ -1,14 +1,32 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Dashboard</title>
+    <title>Admin dashboard missing</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_sidebar.css') }}" />
   </head>
   <body>
-    <h1>Admin Dashboard (Fallback)</h1>
-    <p>If `admin-dashboard.html` file is missing, this fallback is shown.</p>
-    <p>Logged in as: {{ user.email if user else 'unknown' }}</p>
-    <p><a href="{{ url_for('admin_bp.admin_logout') }}">Logout</a></p>
+  <div class="dashboard">
+    {% include 'admin_sidebar.html' %}
+
+  <div class="main-content">
+      <div class="card">
+        <h1>Admin Dashboard Not Found</h1>
+        <p>
+          The application couldn't find the packaged admin dashboard template.
+          This fallback page is shown during development.
+        </p>
+        <p class="hint">
+          Tip: Edit <code>app/templates/dashboard.html</code> or create a proper
+          dashboard template inside <code>app/templates/</code> to replace this
+          placeholder.
+        </p>
+  <p>Logged in as: {{ user.email if user else 'unknown' }}</p>
+  <p><a href="{{ url_for('admin_bp.admin_logout') }}" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></p>
+      </div>
+    </div>
+  </div>
   </body>
 </html>

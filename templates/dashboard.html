@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EduSaint - Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}" />
+</head>
+<body>
+  <div class="dashboard">
+    {% include 'admin_sidebar.html' %}
+
+    <main class="main-content">
+      <header class="header">
+        <div>
+          <h1>Admin Dashboard</h1>
+          <p class="sub">Welcome back — manage courses, students, and content here.</p>
+        </div>
+        <div class="header-actions">
+          <div class="search">
+            <i class="fas fa-search"></i>
+            <input type="search" id="searchInput" placeholder="Search courses, students..." />
+          </div>
+          <div class="notifications">
+            <i class="far fa-bell"></i><span class="badge">5</span>
+          </div>
+          <div class="profile">
+            <div class="avatar">AD</div>
+            <div class="profile-info"><strong>Admin User</strong><small>Administrator</small></div>
+          </div>
+        </div>
+      </header>
+
+      <section class="stats">
+        <div class="card">
+          <div class="icon"><i class="fas fa-book-open"></i></div>
+          <div class="meta">
+            <h3 id="courseCount">12</h3>
+            <p>Courses</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="icon"><i class="fas fa-user-graduate"></i></div>
+          <div class="meta">
+            <h3 id="studentCount">1,248</h3>
+            <p>Students</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="icon"><i class="fas fa-chalkboard-teacher"></i></div>
+          <div class="meta">
+            <h3 id="teacherCount">48</h3>
+            <p>Teachers</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="icon"><i class="fas fa-rupee-sign"></i></div>
+          <div class="meta">
+            <h3 id="revenue">₹2.4L</h3>
+            <p>Monthly Revenue</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-grid">
+        <div class="panel recent-activity">
+          <div class="panel-header">
+            <h2>Recent Activity</h2>
+            <a href="#" class="view-all">View all</a>
+          </div>
+          <ul>
+            <li><i class="fas fa-user-plus"></i> Rahul Sharma registered <small>• 10 mins ago</small></li>
+            <li><i class="fas fa-book"></i> New course: Math Class 10 <small>• 2 hours ago</small></li>
+            <li><i class="fas fa-file-alt"></i> Assignment submitted by Arjun <small>• 5 hours ago</small></li>
+            <li><i class="fas fa-chart-line"></i> Monthly report generated <small>• 1 day ago</small></li>
+          </ul>
+        </div>
+
+        <div class="panel quick-actions">
+          <div class="panel-header"><h2>Quick Actions</h2></div>
+          <div class="actions">
+               <a href="{{ url_for('admin_bp.create_course_page') }}" class="action"><i class="fas fa-plus"></i><span>Create Course</span></a>
+               <a href="{{ url_for('admin_bp.lesson_page') }}" class="action"><i class="fas fa-book"></i><span>Open Lesson</span></a>
+            <a href="#" class="action" id="addStudent"><i class="fas fa-user-plus"></i><span>Add Student</span></a>
+            <a href="#" class="action" id="generateReport"><i class="fas fa-file-invoice"></i><span>Generate Report</span></a>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <small>© EduSaint • All rights reserved</small>
+      </footer>
+    </main>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

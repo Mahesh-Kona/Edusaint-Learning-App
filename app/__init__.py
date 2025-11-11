@@ -45,7 +45,41 @@ def create_app():
     # Admin login/dashboard
     app.register_blueprint(admin_bp)
 
-    # Global JSON error handler
+    # If using local sqlite, initialize the DB (create tables) automatically in dev
+    try:
+        db_uri = app.config.get('SQLALCHEMY_DATABASE_URI', '') or ''
+        if db_uri.startswith('sqlite'):
+            # derive file path and create parent directories as needed
+            # ignore in-memory sqlite
+            if db_uri != 'sqlite:///:memory:' and 'dev.sqlite' in db_uri:
+                db_path = db_uri.split('///')[-1]
+                inst_dir = os.path.dirname(db_path)
+                os.makedirs(inst_dir, exist_ok=True)
+                with app.app_context():
+                    try:
+                        db.create_all()
+                        app.logger.info('Initialized sqlite DB at %s', db_path)
+                    except Exception:
+                        app.logger.exception('Failed to initialize sqlite DB')
+    except Exception:
+        app.logger.exception('Error while attempting to initialize DB')
+
+    # Specific handler for oversized requests (return JSON for AJAX callers)
+    try:
+        from werkzeug.exceptions import RequestEntityTooLarge
+
+        @app.errorhandler(RequestEntityTooLarge)
+        def handle_request_entity_too_large(e):
+            # If client expects JSON (XHR or Accept header), return structured JSON
+            if request.headers.get('X-Requested-With') == 'XMLHttpRequest' or request.headers.get('Accept', '').startswith('application/json'):
+                return jsonify({"success": False, "error": "request too large", "code": 413}), 413
+            # otherwise return a simple JSON message as well (avoid HTML default)
+            return jsonify({"success": False, "error": str(e), "code": 413}), 413
+    except Exception:
+        # If werkzeug isn't available for any reason, skip this specific handler
+        app.logger.debug('RequestEntityTooLarge handler not registered')
+
+    # Global JSON error handler for other exceptions
     @app.errorhandler(Exception)
     def handle_error(e):
         code = getattr(e, 'code', 500)
@@ -121,5 +155,21 @@ def create_app():
         except Exception as e:
             app.logger.exception('Failed to serve uploaded file')
             return jsonify({'success': False, 'error': 'file not found', 'code': 404}), 404
+
+    # Debug helper: expose selected runtime config (only when app.debug is True)
+    @app.route('/__debug/config')
+    def debug_config():
+        if not app.debug:
+            return jsonify({'error': 'debug only'}), 403
+        try:
+            return jsonify({
+                'SQLALCHEMY_DATABASE_URI': app.config.get('SQLALCHEMY_DATABASE_URI'),
+                'UPLOAD_PATH': app.config.get('UPLOAD_PATH'),
+                'MAX_CONTENT_LENGTH': app.config.get('MAX_CONTENT_LENGTH'),
+                'FORCE_MYSQL': app.config.get('FORCE_MYSQL')
+            })
+        except Exception:
+            app.logger.exception('Failed to return debug config')
+            return jsonify({'error': 'failed to read config'}), 500
 
     return app

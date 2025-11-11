@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduSaint - Lesson</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="/static/css/lesson.css" />
+  <!-- Load admin sidebar/dashboard styles last so they override page CSS where needed -->
+  <link rel="stylesheet" href="/static/css/dashboard.css" />
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+  <div class="brand">
+    <i class="fas fa-user-graduate"></i>
+    <h2>EduSaint</h2>
+  </div>
+
+  <nav>
+    <ul class="menu">
+      <li class="menu-item "><a href="/admin/dashboard"><i class="fas fa-home"></i><span>Dashboard</span></a></li>
+      <li class="menu-item "><a href="/admin/create_course"><i class="fas fa-plus-circle"></i><span>Create Course</span></a></li>
+      <li class="menu-item active"><a href="/admin/lesson"><i class="fas fa-book"></i><span>Lessons</span></a></li>
+      <li class="menu-item "><a href="#"><i class="fas fa-chart-line"></i><span>Analytics</span></a></li>
+      <li class="menu-item "><a href="#"><i class="fas fa-cog"></i><span>Settings</span></a></li>
+    </ul>
+  </nav>
+
+  <div class="sidebar-footer">
+    <a href="/admin/logout" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </div>
+</aside>
+
+    <main class="main-content">
+      <header class="header">
+        <h1><i class="fas fa-book-open"></i> Lesson Page</h1>
+  <a href="/admin/dashboard" class="btn back-btn"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+      </header>
+
+      <section class="lesson-header">
+        <h2 id="lessonTitle">Introduction to Algebra</h2>
+        <p id="lessonSub">Chapter 1 • Numbers & Variables</p>
+      </section>
+
+      <section class="video-section">
+        <iframe 
+          id="lessonVideo" 
+          src="https://www.youtube.com/embed/ZkY7N11P2Q8"
+          title="Lesson Video"
+          frameborder="0"
+          allowfullscreen>
+        </iframe>
+      </section>
+
+      <section class="resources">
+        <h3>Resources</h3>
+        <ul>
+          <li><i class="fas fa-file-pdf"></i> <a href="#">Notes - Algebra Basics.pdf</a></li>
+          <li><i class="fas fa-link"></i> <a href="#">Practice Questions</a></li>
+          <li><i class="fas fa-chalkboard-teacher"></i> <a href="#">Teacher Slides</a></li>
+        </ul>
+      </section>
+
+      <section class="quiz-section">
+        <h3>Quick Quiz</h3>
+        <form id="quizForm">
+          <div class="question">
+            <p>Q1. What is the value of x if 2x + 3 = 7?</p>
+            <label><input type="radio" name="q1" value="1" /> 1</label>
+            <label><input type="radio" name="q1" value="2" /> 2</label>
+            <label><input type="radio" name="q1" value="3" /> 3</label>
+          </div>
+          <button type="submit" class="btn primary">Submit</button>
+        </form>
+        <p id="quizResult"></p>
+      </section>
+
+      <footer class="footer">
+        <small>© EduSaint • All rights reserved</small>
+      </footer>
+    </main>
+  </div>
+
+  <script src="/static/js/lesson.js"></script>
+</body>
+</html>

@@ -172,7 +172,14 @@ def upload():
             except Exception:
                 db_error = db_error or str(e2)
 
+    # include asset id when available so callers can reference the created Asset row
     resp = {"success": True, "url": url, "size": size, "mime_type": mime_type, "asset_created": asset_created}
+    try:
+        if asset_created and hasattr(asset, 'id') and asset.id:
+            resp['asset_id'] = asset.id
+    except Exception:
+        # ignore if asset id not available
+        pass
     if db_error:
         resp['db_error'] = db_error
     return resp
